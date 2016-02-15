@@ -23,13 +23,37 @@ public class Parcel {
   public int getLength(){
     return mLength;
   }
+
   public int getHeight(){
     return mHeight;
   }
+
   public int getWidth(){
     return mWidth;
   }
+
   public int getWeight(){
     return mWeight;
+  }
+
+  public int getVolume(){
+    return mLength * mHeight * mWidth;
+  }
+
+  public double costToShip(int deliverySpeed, int distance) {
+    double cost = 0;
+    cost += this.getVolume()*0.25;
+    cost += mWeight*0.15;
+    if(deliverySpeed == 0) {
+      cost += 4.95;
+    }
+    if(deliverySpeed == 1) {
+      cost += 2.95;
+    }
+    if(deliverySpeed == 2) {
+      cost += 1.45;
+    }
+    cost += distance*0.1;
+    return cost;
   }
 }

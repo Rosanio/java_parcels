@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ParcelTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-02-15T18:41:39" hostname="epicodus-55.local" time="0.001">
+<testsuite name="ParcelTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2016-02-15T19:18:23" hostname="epicodus-55.local" time="0.0">
   <properties/>
-  <testcase name="newParcel_instansiatesCorrectly" classname="ParcelTest" time="0.001"/>
+  <testcase name="costToShip_calculateCostToShip_1415" classname="ParcelTest" time="0.0"/>
+  <testcase name="newParcel_getVolumeReturnsVolume_27" classname="ParcelTest" time="0.0"/>
+  <testcase name="newParcel_instansiatesCorrectly" classname="ParcelTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
