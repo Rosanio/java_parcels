@@ -47,10 +47,13 @@ public class App {
     get("/results", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
 
-      Integer inputtedDistance = Integer.parseInt(request.queryParams("distance"));
-      Parcel parcel = new Parcel(request.session().attribute("length"),request.session().attribute("height"), request.session().attribute("width"), request.session().attribute("weight"));
+      Integer selectedIndex1 = Integer.parseInt(request.queryParams("index1"));
+      Integer selectedIndex2 = Integer.parseInt(request.queryParams("index2"));
+      Parcel parcel = new
+      Parcel(request.session().attribute("length"),request.session().attribute("height"), request.session().attribute("width"), request.session().attribute("weight"));
+      double distance = parcel.calculateDistance(selectedIndex1, selectedIndex2);
 
-      double cost = parcel.costToShip(request.session().attribute("speed"), inputtedDistance);
+      double cost = parcel.costToShip(request.session().attribute("speed"), distance);
       double divideBy = 100; //included to ensure output is divided properly, was returning whole numbers
       double roundedCost = Math.round(cost*divideBy)/divideBy;
 
