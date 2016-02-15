@@ -4,5 +4,12 @@
       <input type="checkbox" value="1" name="giftWrap">Would you like your package gift-wrapped?
     </label>
   </div>
+#if ($bigBox)
+<div class="checkbox">
+  <label>
+    <input type="checkbox" value="1" name="bigBox">You are eligable for our big box discount!
+  </label>
+</div>
+#end
   <button class="btn" type="submit">Go!</button>
 </form>

@@ -50,6 +50,9 @@ public class App {
       Integer selectedIndex2 = Integer.parseInt(request.queryParams("index2"));
       request.session().attribute("index1", selectedIndex1);
       request.session().attribute("index2", selectedIndex2);
+      Integer volume = (int)request.session().attribute("length") * (int)request.session().attribute("width") * (int)request.session().attribute("height");
+      Boolean bigBox = volume > 50;
+      model.put("bigBox", bigBox);
 
       model.put("template", "templates/special-offers.vtl");
       return new ModelAndView(model, layout);
@@ -59,6 +62,7 @@ public class App {
       HashMap<String, Object> model = new HashMap<String, Object>();
 
       String giftWrap = request.queryParams("giftWrap");
+      String bigBox = request.queryParams("bigBox");
       Parcel parcel = new
       Parcel(request.session().attribute("length"),request.session().attribute("height"), request.session().attribute("width"), request.session().attribute("weight"));
       double distance = parcel.calculateDistance(request.session().attribute("index1"), request.session().attribute("index2"));
@@ -67,6 +71,9 @@ public class App {
       System.out.println("It works");
       if (giftWrap != null) {
         cost += parcel.giftWrap();
+      }
+      if (bigBox != null) {
+        cost -= 1;
       }
 
       double divideBy = 100; //included to ensure output is divided properly, was returning whole numbers
