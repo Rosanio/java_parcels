@@ -21,12 +21,12 @@ public class App {
 
       Integer inputtedLength = Integer.parseInt(request.queryParams("length"));
       request.session().attribute("length", inputtedLength);
-      Integer inputtedLength = Integer.parseInt(request.queryParams("height"));
-      request.session().attribute("height", inputtedLength);
-      Integer inputtedLength = Integer.parseInt(request.queryParams("width"));
-      request.session().attribute("width", inputtedLength);
-      Integer inputtedLength = Integer.parseInt(request.queryParams("weight"));
-      request.session().attribute("weight", inputtedLength);
+      Integer inputtedHeight = Integer.parseInt(request.queryParams("height"));
+      request.session().attribute("height", inputtedHeight);
+      Integer inputtedWidth = Integer.parseInt(request.queryParams("width"));
+      request.session().attribute("width", inputtedWidth);
+      Integer inputtedWeight = Integer.parseInt(request.queryParams("weight"));
+      request.session().attribute("weight", inputtedWeight);
 
       model.put("template", "templates/delivery-speed.vtl");
       return new ModelAndView(model, layout);
@@ -51,9 +51,11 @@ public class App {
       Parcel parcel = new Parcel(request.session().attribute("length"),request.session().attribute("height"), request.session().attribute("width"), request.session().attribute("weight"));
 
       double cost = parcel.costToShip(request.session().attribute("speed"), inputtedDistance);
+      double divideBy = 100; //included to ensure output is divided properly, was returning whole numbers
+      double roundedCost = Math.round(cost*divideBy)/divideBy;
 
-      model.put("cost", cost);
-      model.put("template", "templates/delivery-speed.vtl");
+      model.put("cost", roundedCost);
+      model.put("template", "templates/results.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
   }
