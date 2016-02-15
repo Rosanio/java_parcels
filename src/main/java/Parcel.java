@@ -96,6 +96,11 @@ public class Parcel {
     return distance;
   }
 
+  public double giftWrap() {
+    double surfaceArea = 2 * (mWidth*mLength + mHeight*mLength + mHeight* mWidth);
+    return surfaceArea * 0.10;
+  }
+
   public double costToShip(int deliverySpeed, double distance) {
     double cost = 0;
     cost += this.getVolume()*0.25;
